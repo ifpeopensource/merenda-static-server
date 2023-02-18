@@ -1,6 +1,9 @@
 # environment variables
 .env
 
+# public test files
+/src/public/**
+
 # compiled output
 /dist
 /node_modules

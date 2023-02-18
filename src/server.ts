@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 
 import { routes } from './routes';
 
@@ -11,6 +12,12 @@ app.use(cors());
 app.use(express.json());
 
 app.use(routes);
+
+const staticFilesPath = path.join(
+  __dirname,
+  process.env.STATIC_FILES_PATH || './public'
+);
+app.use('/public', express.static(staticFilesPath));
 
 const port = process.env.PORT || 3333;
 app.listen(port, () => {
